@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ร้านค้าของฉัน">
+  <rect width="64" height="64" rx="16" fill="#0E7C66"/>
+  <path fill="#fff" d="M14 19h36l-3 10H17l-3-10Zm4 13h28v18H18V32Zm7 4v10h5V36h-5Zm9 0v10h5V36h-5Z"/>
+  <path fill="#C8F1E8" d="M13 19h38l-3-7H16l-3 7Z"/>
+</svg>

@@ -1,0 +1,13 @@
+# ร้านค้าของฉัน — Shop Management System
+
+ระบบจัดการร้านค้าครบวงจร: จุดขาย (POS), สต๊อกสินค้า, แคตตาล็อกสินค้า และส่งออกขายออนไลน์ รองรับ 4 ภาษา (ไทย / อังกฤษ / พม่า / ลาว)
+
+## Features
+- Point of Sale (POS) with barcode scan and PromptPay QR payment
+- Product management (photos, dimensions, details, price, stock, barcode)
+- Barcode stock intake and automatic stock deduction on sale
+- Product catalog + CSV/JSON export for Facebook, Shopee, Lazada, TikTok Shop
+- Role-based access: store staff / online staff / shop owner
+
+## Tech
+Vite · React · TypeScript · Tailwind CSS · Supabase
