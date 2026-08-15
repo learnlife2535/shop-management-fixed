@@ -1,0 +1,29 @@
+name: Validate static site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s index.html
+          test -s assets/index-BNz1h94P.js
+          test -s assets/index-3xhHjJ1j.css
+          grep -q 'assets/index-BNz1h94P.js' index.html
+          grep -q 'assets/index-3xhHjJ1j.css' index.html
+          echo 'Static site files are present and referenced.'
