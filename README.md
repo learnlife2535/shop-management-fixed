@@ -37,6 +37,10 @@ python3 -m http.server 4173
 
 หลังเปิดใช้งาน GitHub Pages ให้เลือก branch ที่ต้องการเผยแพร่และโฟลเดอร์ root (`/`). เนื่องจาก `index.html` และโฟลเดอร์ `assets/` อยู่ใน root ของ repository เว็บไซต์จะโหลดได้โดยตรง
 
-## ข้อจำกัดและการตั้งค่าฐานข้อมูล
+## การเชื่อมต่อฐานข้อมูลและ Environment Variables
 
-Bundle นี้มีการเชื่อมต่อ Supabase และมี URL ที่ถูกฝังอยู่ใน JavaScript สำหรับการใช้งานจริง ผู้ใช้ต้องมีบัญชีที่ถูกต้องและต้องตรวจสอบค่า environment/configuration ของ source project ก่อนนำไปใช้งาน production การทดสอบครั้งนี้ตรวจสอบเฉพาะการแสดงผลของ static site ยังไม่ได้ทดสอบการเข้าสู่ระบบหรือ CRUD ในฐานข้อมูล
+เว็บไซต์เวอร์ชันที่เผยแพร่เชื่อมต่อ Supabase project `klvbswzhydvqtljqrjel` ผ่าน `public` schema โดยใช้ publishable/anon key สำหรับฝั่ง browserเท่านั้น ไม่ใช้ service-role key บน frontend และไม่มีไฟล์ `.env` ใน repository เนื่องจากชุดนี้เป็น static build ที่คอมไพล์แล้ว
+
+ตารางหลักที่รองรับการใช้งาน ได้แก่ `products_v2`, `employees_v2`, `albums_v2`, `album_products_v2`, `sales`, `sale_items_v2`, `stock_entries_v2` และ `shop_settings_v2` การตั้งค่า RLS และสิทธิ์ของตารางถูกสร้างผ่าน migration ของ Supabase แล้ว และผ่าน smoke test การสร้าง อ่าน แก้ไข และลบข้อมูลจำลองเรียบร้อย
+
+หากพัฒนา source project ต่อด้วย Vite ให้เก็บค่าการเชื่อมต่อไว้ในไฟล์ `.env.local` ที่ไม่ commit ขึ้น Git เช่น `VITE_SUPABASE_URL` และ `VITE_SUPABASE_PUBLISHABLE_KEY` จากนั้นให้ inject ค่าในขั้นตอน build/deploy แทนการฝังค่าแบบ static bundle การทดสอบ production ควรใช้บัญชีพนักงานที่สร้างใน `employees_v2` และไม่ควรนำ service-role key ไปไว้ใน browser
